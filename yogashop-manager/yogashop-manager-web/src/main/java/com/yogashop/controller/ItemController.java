@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.yogashop.common.pojo.EUDataGridResult;
 import com.yogashop.pojo.TbItem;
 import com.yogashop.service.ItemService;
 
@@ -25,6 +26,13 @@ public class ItemController {
 	public TbItem getItem(@PathVariable Long itemId) {
 		TbItem tbItem = itemSevice.getItemById(itemId);
 		return tbItem;
+	}
+	
+	@RequestMapping("/list")
+	@ResponseBody
+	public EUDataGridResult getItemList(Integer page, Integer rows) {
+		EUDataGridResult result = itemSevice.getItemList(page, rows);
+		return result;
 	}
 	
 
